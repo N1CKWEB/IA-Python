@@ -47,12 +47,14 @@ Implication(symbols["Acaballero"],
 
 
 escenario_2 = And (
-    
-    )
+    And(symbols("Acaballero",symbols["Aladron"])),
+    Not(And(symbols("Acaballero",symbols["Aladron"]))),
+)
 
 escenario_3 = And (
-    
-    )
+    And(symbols("Acaballero"),symbols("Aladron")),  
+     Or(symbols("Bcaballero"),symbols("Bladron")),
+     )
 
 escenario_4 = And(
         
