@@ -35,27 +35,67 @@ symbols = []
 
 
 # Solo puede haber una persona, una habitacion y un arma
-escenario_1 = And   (
-Or(symbols["Acaballero"], symbols ["Aladron"]),
-        Not(And(symbols["Acaballero"], symbols ["Aladron"])),
-        )
-escenario_1.add(
-Implication(symbols["Acaballero"],
-        And(symbols["Acaballero",symbols["Aladron"]])
+
+escenario_1 = And(
+    Or(Acaballero, Aladron), 
+    Not(And(Acaballero, Aladron)),
+
+    Implication(
+        Acaballero,
+        And(Acaballero, Aladron)
+    ),
+
+    Implication(
+        Aladron,
+        Not(And(Acaballero, Aladron))
     )
-)   
-
-
-escenario_2 = And (
-    And(symbols("Acaballero",symbols["Aladron"])),
-    Not(And(symbols("Acaballero",symbols["Aladron"]))),
 )
 
-escenario_3 = And (
-    And(symbols("Acaballero"),symbols("Aladron")),  
-     Or(symbols("Bcaballero"),symbols("Bladron")),
-     )
+escenario_2 = And(
+    Or(Acaballero, Aladron), 
+    Or(Bcaballero, Bladron),
+    Not(And(Acaballero, Aladron)),
+    Not(And(Bcaballero, Bladron)),
+    
+    Implication(
+        Aladron,
+        Not(And(Aladron, Bladron))
+    ),
 
+    Implication(
+        Acaballero, 
+        And(Aladron, Bladron)
+    ),
+
+    
+) 
+
+escenario_3 = And(
+    Or(Acaballero, Aladron), 
+    Or(Bcaballero, Bladron),
+    Not(And(Acaballero, Aladron)),
+    Not(And(Bcaballero, Bladron)),
+
+    Implication(
+        Aladron,
+        Not(And(Aladron, Bladron))
+    ),
+
+    Implication(
+        Acaballero, 
+        And(Aladron, Bladron)
+    ),
+
+    Implication(
+        Bcaballero,
+        Not(And(Bladron, Aladron))
+    ),
+
+    Implication(
+        Bladron,
+        And(Bladron, Aladron)
+    ),
+)
 escenario_4 = And(
         
     Or(Acaballero,Aladron),
